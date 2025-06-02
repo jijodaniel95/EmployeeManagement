@@ -98,4 +98,12 @@ public class Salary {
             return Objects.hash(employee, effectiveFrom);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Salary{" +
+                ", effectiveFrom=" + effectiveFrom +
+                ", salary=" + salary +
+                '}';
+    }
 }
