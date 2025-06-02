@@ -2,6 +2,7 @@ package com.company.employeemanagement.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,16 +29,16 @@ public class Employee {
     @Column(name = "hire_date", nullable = false)
     private LocalDate hireDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dept_id")
     private Department department;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<Salary> salaries;
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Salary> salaries=new ArrayList<>();
 
     // Getters & setters...
     public Integer getEmpId() {
@@ -107,5 +108,10 @@ public class Employee {
                 ", role=" + role +
                 ", salaries=" + salaries +
                 '}';
+    }
+
+    public void addSalary(Salary newSalary) {
+        salaries.add(newSalary);
+        newSalary.setEmployee(this);
     }
 }
