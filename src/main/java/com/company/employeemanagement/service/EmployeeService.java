@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface EmployeeService {
     List<EmployeeDTO> getAllEmployees();
+    List<EmployeeDTO> getAllEmployeesByPagination(int pageNo, int pageSize);
+    EmployeeDTO getEmployeeById(Integer id);
+    EmployeeDTO saveEmployee(EmployeeDTO employeeDTO);
 }
