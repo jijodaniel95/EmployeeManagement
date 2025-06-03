@@ -64,11 +64,6 @@ public class EmployeeMapper {
     }
 
     public static Employee toEntity(EmployeeDTO employeeDTO) {
-        if (employeeDTO == null) {
-            logger.warn("Attempting to map null EmployeeDTO to Entity");
-            return null;
-        }
-
         logger.debug("Mapping EmployeeDTO to Entity - Email: {}", employeeDTO.getEmail());
         Employee employee = new Employee();
         employee.setEmpId(employeeDTO.getEmpId());
