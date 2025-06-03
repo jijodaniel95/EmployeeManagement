@@ -56,11 +56,6 @@ public class SalaryMapper {
     }
 
     public static Salary toEntity(SalaryDTO salaryDTO) {
-        if (salaryDTO == null) {
-            logger.warn("Attempting to map null SalaryDTO to Entity");
-            return null;
-        }
-
         logger.debug("Mapping SalaryDTO to Entity - Amount: {}, Date: {}",
                     salaryDTO.getSalary(), salaryDTO.getEffectiveFrom());
         Salary salary = new Salary();
